@@ -1,0 +1,47 @@
+ul.children {
+    margin: 10px 0 10px 20px;
+}
+
+.admin-box {
+    min-width: 255px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    margin: 0 15px 0 0;
+}
+
+
+.admin-box .title {
+    border-bottom: 1px solid #eee;
+    padding: 8px 12px;
+    margin: 0px;
+    font-size: 14px;
+}
+
+.admin-box .body {
+    padding: 0 15px 15px 15px;
+}
+
+.admin-box .toggle-group {
+    padding: 20px 15px 10px 15px;
+    font-weight: 600;
+}
+
+.admin-box .body.scrollable {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.admin-box .footer {
+    border-top: 1px solid #eee;
+    padding: 12px 12px;
+}
+
+.admin-box .footer input[type=submit]{
+    float: right;
+}
+
+.admin-box .footer:after{
+    content: "";
+    display: table;
+    clear: both;
+}

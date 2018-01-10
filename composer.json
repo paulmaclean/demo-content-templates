@@ -1,0 +1,13 @@
+{
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "PMac\\DemoContentTemplates\\": "src/",
+      "PMac\\DemoContentTemplates\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "beberlei/assert": "^2.8"
+  }
+}
