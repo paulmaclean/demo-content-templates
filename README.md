@@ -18,4 +18,4 @@ This wordpress plugin allows a user to create templates of their page content. T
 ## Tests ##
 
 In order to run the tests you will need to scaffold the test environment. 
-Instructions here. https://premium.wpmudev.org/blog/unit-testing-wordpress-plugins-phpunit/
+Inªstructions here. https://premium.wpmudev.org/blog/unit-testing-wordpress-plugins-phpunit/
