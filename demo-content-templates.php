@@ -8,7 +8,7 @@ Description: Store demo page content for later use.
 Version: 1.0
 
 Author: PMac
-Author URI:
+Author URI:https://github.com/paulmaclean/demo-content-templates
 
 Text Domain: demo-content-templates
 */
