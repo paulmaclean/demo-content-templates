@@ -13,7 +13,7 @@
                     <input type="hidden" name="convert_from" value="page"/>
                     <input type="hidden" name="convert_to" value="dct_template"/>
                     <div class="body scrollable">
-                      <?php wp_nonce_field('dct_verify'); ?>
+                      <?php wp_nonce_field('dct_convert_post'); ?>
                       <?php echo '<ul>' . $page_checkboxes . '</ul>'; ?>
                     </div>
                     <div class="footer">
@@ -31,11 +31,11 @@
                     <input id="toggle-templates" type="checkbox" onClick="toggle(this, 'templates')" /><label for="toggle-templates"><?php _e('Toggle All', 'demo-content-templates') ?></label>
                 </div>
                 <form method="post" class="templates" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-                    <input type="hidden" name="action" value="<?php echo $form_actions['dct_convert'] ?>"/>
+                    <input type="hidden" name="action" value="<?php echo esc_attr($form_actions['dct_convert']) ?>"/>
                     <input type="hidden" name="convert_from" value="dct_template"/>
                     <input type="hidden" name="convert_to" value="page"/>
                     <div class="body scrollable">
-                        <?php wp_nonce_field('dct_verify'); ?>
+                        <?php wp_nonce_field('dct_convert_post'); ?>
                         <?php echo '<ul>' . $content_template_checkboxes . '</ul>'; ?>
                     </div>
                     <div class="footer">

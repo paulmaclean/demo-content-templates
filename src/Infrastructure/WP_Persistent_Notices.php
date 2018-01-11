@@ -116,10 +116,10 @@ class WP_Persistent_Notices {  // replace ClassName with the name of your class
   public function ajax_get_notices() {
     $location = 'default';
     if (isset($_GET['location']) && $_GET['location']) {
-      $location = $_GET['location'];
+      $location = sanitize_text_field($_GET['location']);
     }
     if (isset($_POST['location']) && $_POST['location']) {
-      $location = $_POST['location'];
+      $location = sanitize_text_field($_POST['location']);
     }
     $notices = $this->retrieve_notices($location);
     echo json_encode($notices);

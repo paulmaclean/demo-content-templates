@@ -5,10 +5,10 @@ foreach ($meta_items as $meta_key => $meta_value) {
   }
   ?>
     <div style="width: 45%;margin-left: 1%; float: left">
-        <input type="text" id="<?php echo $meta_key ?>"
-               name="page_meta[<?php echo $meta_key ?>]"
-               value="<?php echo $meta_value[0] ?>">
-        <label for="<?php echo $meta_key ?>"><?php echo $meta_key ?></label>
+        <input type="text" id="<?php echo esc_attr($meta_key) ?>"
+               name="page_meta[<?php echo esc_attr($meta_key) ?>]"
+               value="<?php echo esc_attr($meta_value[0]) ?>">
+        <label for="<?php echo esc_attr($meta_key) ?>"><?php echo esc_attr($meta_key) ?></label>
     </div>
 <?php } ?>
 <div style="clear: both"></div>

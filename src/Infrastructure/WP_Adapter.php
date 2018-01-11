@@ -231,4 +231,12 @@ class WP_Adapter {
   public function is_editing_post() {
     return isset($_POST['action']) && $_POST['action'] === 'editpost';
   }
+
+  public function sanitize_text($input) {
+    return sanitize_text_field($input);
+  }
+
+  public function verify_nonce($action) {
+    check_admin_referer($action);
+  }
 }

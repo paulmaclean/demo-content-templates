@@ -44,12 +44,13 @@ class SavePostHandler {
    * @param int $post_id
    */
   protected function update_meta($post_id) {
-
-    if ($this->wp_adapter->is_editing_post() || $this->wp_adapter->wp_is_post_revision($post_id) || $this->wp_adapter->get_post_type($post_id) !== $this->post_type_name) {
+    if (!$this->wp_adapter->is_editing_post() || $this->wp_adapter->wp_is_post_revision($post_id) || $this->wp_adapter->get_post_type($post_id) !== $this->post_type_name) {
       return;
     }
     if ($this->wp_adapter->get_post_type($post_id) === $this->post_type_name) {
       foreach ($_POST['page_meta'] as $page_meta_key => $page_meta_value) {
+        $page_meta_key = $this->wp_adapter->sanitize_text($page_meta_key);
+        $page_meta_value = $this->wp_adapter->sanitize_text($page_meta_value);
         $this->wp_adapter->update_post_meta($post_id, $page_meta_key, $page_meta_value);
       }
       $this->wp_adapter->update_post_meta($post_id, '_wp_page_template', $_POST['_wp_page_template']);

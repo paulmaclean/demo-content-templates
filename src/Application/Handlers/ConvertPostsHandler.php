@@ -1,5 +1,7 @@
 <?php
+
 namespace PMac\DemoContentTemplates\Application\Handlers;
+
 use PMac\DemoContentTemplates\Application\Services\ConversionService;
 use PMac\DemoContentTemplates\Infrastructure\WP_Adapter;
 
@@ -46,10 +48,11 @@ class ConvertPostsHandler {
   }
 
   public function handle() {
-    $input = $_POST;
+    $this->wp_adapter->verify_nonce('dct_convert_post');
+    $input = $this->sanitize($_POST);
     try {
       $add_postfix = $input['convert_to'] === $this->post_type_name;
-      $this->conversion_service->convert(array_keys($input['post_ids']), $input['convert_from'], $input['convert_to'], $input['flatten_hierarchy'], '-' . $this->post_type_name, $add_postfix);
+      $this->conversion_service->convert($input['post_ids'], $input['convert_from'], $input['convert_to'], $input['flatten_hierarchy'], '-' . $this->post_type_name, $add_postfix);
       $this->wp_adapter->add_notice([
         'type'        => 'success',
         'message'     => 'Conversion Successful',
@@ -64,4 +67,15 @@ class ConvertPostsHandler {
     }
     $this->wp_adapter->admin_redirect($this->redirect_to);
   }
+
+  protected function sanitize($posted) {
+    $input = [
+      'convert_from'      => $this->wp_adapter->sanitize_text($posted['convert_to']),
+      'convert_to'        => $this->wp_adapter->sanitize_text($posted['convert_to']),
+      'flatten_hierarchy' => isset($posted['flatten_hierarchy']) ? $this->wp_adapter->sanitize_text($posted['flatten_hierarchy']): false,
+      'post_ids' => array_map( 'absint', array_keys($posted['post_ids'] ))
+    ];
+
+    return $input;
+ }
 }
